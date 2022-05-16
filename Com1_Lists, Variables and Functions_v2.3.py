@@ -17,22 +17,15 @@ Trial 3 is to continue development on trial 1's number checker to allow floats
 #             return valid
 
 
-# Number checker function
-def num_check(question):
-    valid = ""
-    # using .isdigit check for response
-    while valid == "":
-        valid = str(input(question))
-        valid.strip()
-        if valid[0] == "$" and valid[1].isnumeric() == True:
-            valid.replace("$", " ")
-        else:
-            print("Sorry, you must enter an integer")
-            num_check("Please try again:")
-        if valid == "" or valid.isalpha() == True:
-            print("Sorry, you must enter an integer")
-        else:
-            return valid
+# float checker function
+def float_check(question):
+    while True:
+        try:
+            float_num = input(question)
+            return float(float_num)
+
+        except ValueError:
+            print("please enter valid number:\n")
 
 
 # Main Routine
@@ -40,5 +33,5 @@ def num_check(question):
 # name = not_blank("What is your name: ")
 # using print statement to test the function
 # print(f"Hello {name}!")
-number = num_check("How old are you: ")
+number = float_check("What is your budget?\n$ ")
 print(number)

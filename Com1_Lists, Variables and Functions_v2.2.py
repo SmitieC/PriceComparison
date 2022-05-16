@@ -1,7 +1,7 @@
 """ Component 1 of Price Checker Program
 Set out Lists Variables and functions to then build on in future components
-V2 is making a function to test for digit inputs
-trying a different way to check for digits from version 2
+V2 trial 2 is making a function to test for digit inputs
+trying a different way to check for digits from version 2 trial 1
 10/05/2022 Conor Smith"""
 
 

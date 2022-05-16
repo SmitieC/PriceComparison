@@ -1,6 +1,6 @@
 """ Component 1 of Price Checker Program
 Set out Lists Variables and functions to then build on in future components
-V4 is making lists to store the product information
+V5 is making Variables to store Budget and user's name
 10/05/2022 Conor Smith"""
 
 
@@ -35,6 +35,10 @@ product_amount_list = []
 product_price_list = []
 # list to store value from price over quantity calculation
 product_value_list = []
+
+# Set up variables
+user_budget = int("Please enter your budget: ")   # need to make a float
+# checker for money and budget
 
 name = not_blank("What is your name: ")
 digit = num_check("How old are you: ")

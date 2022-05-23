@@ -1,20 +1,20 @@
 """ Component 3 of Price Checker Program
 Ask user for their budget and also for unit of measure
-Use already made functions to check that answers are valid
+Make a function to check that answers are valid
 V2 is to ask for users unit of measure
 20/05/2022 Conor Smith"""
 
 
-# Blank checker function
-def not_blank(question):
-    valid = ""
-    # using .isalpha check for response
-    while not valid.isalpha():
-        valid = input(question)
-        if valid == "" or valid.isalpha() != True:
-            print("This cannot be blank...")
+# Function to check for unit of measure
+def unit_check(question):
+    error = "\nSorry, you must enter a valid unit of measure\n"
+    unit = ""
+    while unit != "l" and unit != "ml" and unit != "g" and unit != "kg":
+        unit = input(question).lower()
+        if unit == "ml" or unit == "l" or unit == "g" or unit == "kg":
+            return unit
         else:
-            return valid
+            print(error)
 
 
-unit_of_measure = input("what is your unit of measure")
+unit_of_measure = unit_check("what is your unit of measure\nl, ml, g, kg:")

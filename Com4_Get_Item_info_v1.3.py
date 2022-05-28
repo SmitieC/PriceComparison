@@ -2,8 +2,20 @@
 Create a looping code to ask for item name and price and weight
 Use already created functions to check for valid inputs
 input all items into lists for later use
-Trial 3 is to use a dictionary to store the data
-23/05/2022 Conor Smith"""
+Trial 3 is to input unit_of_measure from previous component
+27/05/2022 Conor Smith"""
+
+
+# unit checker from base component
+def unit_check(question):
+    error = "\nSorry, you must enter a valid unit of measure\n"
+    unit = ""
+    while unit != "l" and unit != "ml" and unit != "g" and unit != "kg":
+        unit = input(question).lower()
+        if unit == "ml" or unit == "l" or unit == "g" or unit == "kg":
+            return unit
+        else:
+            print(error)
 
 
 # not blank function taken from base
@@ -32,8 +44,7 @@ def float_check(question):
 # taken from PC-Base.py was created in component 1
 # Main
 
-# set up dictionary's and lists
-products = {}
+# set up lists
 product_name_list = []
 product_amount_list = []
 product_price_list = []
@@ -44,6 +55,7 @@ product_price_list = []
 name = ""
 count = 0
 MAX_ENTRIES = 5
+unit_of_measure = unit_check("what is your unit of measure\nl, ml, g, kg:")
 
 while name != "Xxx" and count != MAX_ENTRIES:
     if MAX_ENTRIES - count > 1:
@@ -59,11 +71,10 @@ while name != "Xxx" and count != MAX_ENTRIES:
         # Get amount
         amount = float_check("How much is the item?\n$:")
         product_price_list.append(amount)
-        quantity = float_check("What is the unit volume?\n:")
+        # Get unit volume
+        quantity = float_check(f"What is the unit volume?\n{unit_of_measure}:")
         product_amount_list.append(quantity)
-# quantity = float_check(f"What is the unit volume?\n{unit_of_measure}:")
-# unit_of_measure is already in base but requires many functions to work.
-# Therefore, not using it for testing.
+
 print(f"You have entered {count} products.")
 print(product_name_list)
 print(product_price_list)

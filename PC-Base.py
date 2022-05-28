@@ -67,13 +67,12 @@ def unit_check(question):
 # Main
 
 # set up dictionary's and lists
-product_name_list = []
-product_amount_list = []
-product_price_list = []
-# list to store value from price over quantity calculation
-product_value_list = []
+product_list = []
 
 # set up variables and constants
+name = ""
+count = 0
+MAX_ENTRIES = 5
 instructions = "***Instructions***\n" \
                "This program will compare and produce the best value items\n" \
                "based on the following criteria:\n" \
@@ -89,11 +88,26 @@ display_instructions = yes_no_checker("Have you used this program before?"
                                       "\n(yes/no)\n")
 if display_instructions is False:
     print(instructions)
-# Get budget (cannot be blank, must be a number)
+# Get budget and unit of measure
 budget = float_check("What is your budget?\n$")
 unit_of_measure = unit_check("what is your unit of measure\nl, ml, g, kg:")
 # loop to get item info
-
+while name != "Xxx" and count != MAX_ENTRIES:
+    if MAX_ENTRIES - count > 1:
+        print(f"You have {MAX_ENTRIES - count} entries left.")
+    else:
+        # warn user of final product
+        print("\n***You have ONLY ONE product left!***")
+    # Get details
+    # input all details into a new sub-list for each loop of inputs
+    name = not_blank("What is the product name?\n").title()
+    if name != "Xxx":
+        count += 1  # don't want to include testing Xxx
+        # Get amount
+        amount = float_check("How much is the item?\n$:")
+        # Get unit volume
+        quantity = float_check(f"What is the unit volume?\n{unit_of_measure}:")
+        product_list.append([name, amount, quantity])
 # Calculate best value
 
 # Print results to user

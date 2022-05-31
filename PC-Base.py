@@ -64,6 +64,11 @@ def unit_check(question):
             print(error)
 
 
+# Function to sort product_list by value
+def best_value(value):
+    return value[3]
+
+
 # Main
 
 # set up dictionary's and lists
@@ -107,7 +112,9 @@ while name != "Xxx" and count != MAX_ENTRIES:
         amount = float_check("How much is the item?\n$:")
         # Get unit volume
         quantity = float_check(f"What is the unit volume?\n{unit_of_measure}:")
-        product_list.append([name, amount, quantity])
-# Calculate best value
-
+        # calculate product value
+        value = amount / quantity
+        product_list.append([name, amount, quantity, value])
+# Reorder list based on best value
+product_list.sort(key=best_value)
 # Print results to user

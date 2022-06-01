@@ -89,6 +89,7 @@ instructions = "***Instructions***\n" \
 
 # ask user if they have used the program before
 # show instructions if they would like
+name = not_blank("What is your name: ")
 display_instructions = yes_no_checker("Have you used this program before?"
                                       "\n(yes/no)\n")
 if display_instructions is False:
@@ -118,3 +119,18 @@ while name != "Xxx" and count != MAX_ENTRIES:
 # Reorder list based on best value
 product_list.sort(key=best_value)
 # Print results to user
+for i in range(len(product_list)):
+    if product_list[i][1] < budget:
+        print("***** Summary *****")
+        print(f"You have entered {count} products")
+        print("\nThe best value product is:")
+        print(product_list[i][0], "at a value of: $", product_list[i][1])
+        print(f"The list sorted from best value to worst:\n{product_list}")
+        print(f"\nThank you, {name} for using this program!")
+        break
+    else:
+        print("***** Summary *****")
+        print(f"You have entered {count} products")
+        print("\nSorry, there are no products within your budget")
+        print(f"The list sorted from best value to worst:\n{product_list}")
+        print(f"\nThank you, {name} for using this program!")

@@ -1,8 +1,7 @@
-""" Component 4 of Price Checker Program
-Create a looping code to ask for item name and price and weight
-Use already created functions to check for valid inputs
-Sort list by value
-28/05/2022 Conor Smith"""
+""" Component 7 of Price Checker Program
+Calculate and print the best value with users budget
+V2 is to print summary for user
+1/06/2022 Conor Smith"""
 
 
 # unit checker from base component
@@ -51,11 +50,12 @@ def best_value(value):
 # set up a 2 dimensional list
 product_list = []
 
-# Start of loop
-# Initialize the loop so that it runs at least once
+# Start of loop, taken from base component using it for testing.
 name = ""
 count = 0
 MAX_ENTRIES = 5
+# using already made budget input made in  a previous component
+budget = float_check("What is your budget?\n$")
 unit_of_measure = unit_check("what is your unit of measure\nl, ml, g, kg:")
 
 while name != "Xxx" and count != MAX_ENTRIES:
@@ -76,8 +76,17 @@ while name != "Xxx" and count != MAX_ENTRIES:
         # calculate product value
         value = amount / quantity
         product_list.append([name, amount, quantity, value])
-
-print(f"This is your unsorted list\n{product_list}")
 product_list.sort(key=best_value)
-print(f"This is your sorted list\n{product_list}")
-# print statements are for testing
+for i in range(len(product_list)):
+    if product_list[i][1] < budget:
+        print("***** Summary *****")
+        print(f"You have entered {count} products")
+        print("\nThe best value product is:")
+        print(product_list[i][0], "at a value of: $", product_list[i][1])
+        print(f"The list sorted from best value to worst:\n{product_list}")
+        break
+    else:
+        print("***** Summary *****")
+        print(f"You have entered {count} products")
+        print("\nSorry, there are no products within your budget")
+        print(f"The list sorted from best value to worst:\n{product_list}")

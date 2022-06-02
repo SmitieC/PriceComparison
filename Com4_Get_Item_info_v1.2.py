@@ -29,7 +29,7 @@ def float_check(question):
             print("please enter valid number:\n")
 
 
-# taken from PC-Base.py was created in component 1
+# taken from PC-Base_v1.py was created in component 1
 # Main
 
 # set up dictionary's and lists

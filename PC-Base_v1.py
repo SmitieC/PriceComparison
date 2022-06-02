@@ -1,9 +1,8 @@
 """Base Component of Price Checker program
 Include all components into one program
+V1 include all components into one cohesive program
 Conor Smith"""
 
-
-# Import Statements
 
 # Functions go here
 # Blank checker function
@@ -85,7 +84,6 @@ instructions = "***Instructions***\n" \
                "2. Quantity\n" \
                "3. Budget\n" \
                "The program will then display the best value item\n" \
-               "Thank you for using this program!"
 
 # ask user if they have used the program before
 # show instructions if they would like
@@ -124,13 +122,15 @@ for i in range(len(product_list)):
         print("***** Summary *****")
         print(f"You have entered {count} products")
         print("\nThe best value product is:")
-        print(product_list[i][0], "at a value of: $", product_list[i][1])
-        print(f"The list sorted from best value to worst:\n{product_list}")
-        print(f"\nThank you, {name} for using this program!")
+        print(product_list[i][0], "at the price of: $", product_list[i][1])
+        print(f"\nThe list sorted from best value to worst:\n(arranged name, "
+              f"price, volume, value per {unit_of_measure})\n{product_list}")
+        print("\nThank you for using this program!")
         break
     else:
         print("***** Summary *****")
         print(f"You have entered {count} products")
         print("\nSorry, there are no products within your budget")
-        print(f"The list sorted from best value to worst:\n{product_list}")
-        print(f"\nThank you, {name} for using this program!")
+        print(f"The list sorted from best value to worst:\n(arranged name, "
+              f"price, volume, value per {unit_of_measure})\n{product_list}")
+        print("\nThank you for using this program!")

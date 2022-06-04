@@ -1,6 +1,6 @@
 """Base Component of Price Checker program
 Include all components into one program
-V1 include all components into one cohesive program
+V3 resolve more issues related to usability testing
 Conor Smith"""
 
 
@@ -11,7 +11,8 @@ def not_blank(question):
     # using .isalpha check for response
     while not valid.isalpha():
         valid = input(question)
-        if valid == "" or valid.isalpha() != True:
+        if valid == "" or valid[0].isalpha() != True:
+            # changed to only query first position
             print("This cannot be blank...")
         else:
             return valid
@@ -29,13 +30,14 @@ def num_check(question):
             print(error)
 
 
-# float checker function
+# float checker function do not allow negative numbers
 def float_check(question):
     while True:
         try:
             float_num = input(question)
             if float(float_num) < 0:
-                print("Please enter a positive number")
+                print("please enter a positive number")
+                # Create second loop to only allow positive numbers
             else:
                 return float(float_num)
         except ValueError:
@@ -85,7 +87,9 @@ instructions = "***Instructions***\n" \
                "1. Price\n" \
                "2. Quantity\n" \
                "3. Budget\n" \
-               "The program will then display the best value item\n" \
+               "The program will then display the best value item \n"\
+               f"The program will compare a max of {MAX_ENTRIES} items\n" \
+               f"To exit early type 'xxx'\n"
 
 # ask user if they have used the program before
 # show instructions if they would like
@@ -115,6 +119,7 @@ while name != "Xxx" and count != MAX_ENTRIES:
         quantity = float_check(f"What is the unit volume?\n{unit_of_measure}:")
         # calculate product value
         value = amount / quantity
+        value = float(round(value, 2))  # round to 2 decimal places
         product_list.append([name, amount, quantity, value])
 # Reorder list based on best value
 product_list.sort(key=best_value)

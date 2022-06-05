@@ -93,7 +93,7 @@ instructions = "***Instructions***\n" \
 
 # ask user if they have used the program before
 # show instructions if they would like
-name = not_blank("What is your name: ")
+username = not_blank("What is your name: ")
 display_instructions = yes_no_checker("Have you used this program before?"
                                       "\n(yes/no)\n")
 if display_instructions is False:
